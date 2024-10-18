@@ -55,12 +55,12 @@ public function delete(EtudientRepository $er,int $id,EntityManagerInterface $en
     public function update(ManagerRegistry $doctrine,Request $request,$id,EtudientRepository $etu):response
     {
         $etud=$etu->find($id);
-        $form=$this->createForm(EtuType::class,$etud);// creation formulaire à partir de classe authortype
-        $form->handleRequest($request);//traiter les données recus 
-       if ($form->isSubmitted() )//verifier  form envoyer valide 
+        $form=$this->createForm(EtuType::class,$etud);
+        $form->handleRequest($request);
+       if ($form->isSubmitted() )
        {
-        $em=$doctrine->getManager(); // appel entity manager
-        $em->flush();// d'envoyer tout ce qui a été persisté avant à la base de données
+        $em=$doctrine->getManager(); 
+        $em->flush();
         return $this->redirectToRoute('affiche_app');
     }
     return $this->render('etudient/update.html.twig',['form'=>$form->createView()]) ;
