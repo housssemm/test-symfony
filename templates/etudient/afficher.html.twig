@@ -1,0 +1,41 @@
+<table border="1">
+	<tr>
+		<th>id</th>
+		<th>nom</th>
+		<th>prenom</th>
+		<th>email</th>
+		<th>action</th>
+
+	</tr>
+
+
+	{%for etudient in list%}
+
+
+		<tr>
+			<td>{{etudient.id}}</td>
+
+
+			<td>{{etudient.nom}}</td>
+
+			<td>{{etudient.prenom}}</td>
+
+
+			<td>{{etudient.email}}</td>
+
+
+			<td>
+				<a href="{{ path('etu_update', {'id': etudient.id}) }}">update</a>
+
+
+				<a href="{{ path('app_delete', { 'id': etudient.id }) }}">Supprimer</a>
+
+			</td>
+
+			<br>
+		</tr>
+
+		{%endfor%}
+	</table>
+
+	<a href="{{path('etud_app')}}">ajouter</a>
